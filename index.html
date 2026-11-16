@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b35">
+    <title>ClimaNow | Previsão do Tempo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">☀</span>
+                <div>
+                    <h1>Clima<span>Now</span></h1>
+                    <p>Seu tempo, em tempo real</p>
+                </div>
+            </div>
+
+            <div class="header-info">
+                <span class="status-dot"></span>
+                Dados meteorológicos atualizados
+            </div>
+        </header>
+
+        <main>
+
+            <section class="welcome">
+                <p class="subtitle">PREVISÃO METEOROLÓGICA</p>
+                <h2>Como está o clima hoje?</h2>
+                <p>Descubra as condições climáticas de qualquer cidade.</p>
+            </section>
+
+            <section class="search-section">
+                <form id="searchForm">
+                    <div class="search-box">
+                        <span class="search-icon">⌕</span>
+                        <input
+                            type="text"
+                            id="cityInput"
+                            placeholder="Digite o nome da cidade..."
+                            autocomplete="off"
+                            aria-label="Nome da cidade"
+                        >
+                        <button type="submit" id="searchButton">
+                            Buscar <span>→</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="message" class="message" role="status"></div>
+            </section>
+
+            <section id="weatherContent" class="weather-content hidden">
+
+                <div class="location-header">
+                    <div>
+                        <p class="section-label">LOCALIZAÇÃO ATUAL</p>
+                        <h2 id="cityName">Cidade</h2>
+                        <p id="locationDetails">Estado, País</p>
+                    </div>
+
+                    <div class="updated">
+                        <span>●</span> <span id="updateTime">Atualizado agora</span>
+                    </div>
+                </div>
+
+                <section class="current-weather">
+
+                    <div class="main-weather">
+                        <div class="weather-description">
+                            <span id="weatherIcon" class="weather-icon">☀️</span>
+                            <div>
+                                <h3 id="weatherDescription">Ensolarado</h3>
+                                <p>Condições atuais</p>
+                            </div>
+                        </div>
+
+                        <div class="temperature">
+                            <span id="temperature">--</span><sup>°C</sup>
+                        </div>
+
+                        <p class="feels-like">
+                            Sensação térmica de <strong id="feelsLike">--°C</strong>
+                        </p>
+                    </div>
+
+                    <div class="weather-stats">
+
+                        <div class="stat-card">
+                            <div class="stat-icon humidity">💧</div>
+                            <div>
+                                <p>Umidade</p>
+                                <h3 id="humidity">--%</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon rain">🌧️</div>
+                            <div>
+                                <p>Chance de chuva</p>
+                                <h3 id="rainChance">--%</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon wind">💨</div>
+                            <div>
+                                <p>Velocidade do vento</p>
+                                <h3 id="windSpeed">-- km/h</h3>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon pressure">🌡️</div>
+                            <div>
+                                <p>Precipitação</p>
+                                <h3 id="precipitation">-- mm</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="section-label">PREVISÃO HORÁRIA</p>
+                            <h2>Variação da temperatura</h2>
+                        </div>
+                        <span class="panel-tag">Próximas 24 horas</span>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="temperatureChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="section-label">ACOMPANHAMENTO</p>
+                            <h2>Previsão para os próximos dias</h2>
+                        </div>
+                    </div>
+
+                    <div id="forecastDays" class="forecast-grid"></div>
+                </section>
+
+                <footer class="weather-footer">
+                    <p>Dados meteorológicos fornecidos por <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p>
+                    <p>Informações sujeitas a atualizações dos modelos meteorológicos.</p>
+                </footer>
+
+            </section>
+
+            <section id="emptyState" class="empty-state">
+                <div class="empty-icon">🌤️</div>
+                <h3>Pesquise uma cidade</h3>
+                <p>Digite o nome de uma cidade para visualizar as informações meteorológicas.</p>
+            </section>
+
+        </main>
+
+        <footer class="main-footer">
+            <p>ClimaNow © 2026 | Sistema de consulta meteorológica</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
